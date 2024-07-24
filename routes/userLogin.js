@@ -12,8 +12,7 @@ const router = express.Router();
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(req.body)
-        //check all are filled or not
+       
         if (!email || !password) {
             return res.status(400).json({
                 message: "all fields are mandatory"
@@ -28,7 +27,7 @@ router.post('/login', async (req, res) => {
                 message: "User not found"
             })
         }
-        //console.log(user)
+       
 
         //compare the password
         const isPasswordValid = await bcrypt.compare(password, user.password)
@@ -38,18 +37,14 @@ router.post('/login', async (req, res) => {
                 message: "Invalid Password"
             })
         }
-        // console.log(isPasswordValid)
+        
         //if everything matched gen jwt 
         const token = jwt.sign({ userId: user._id }, process.env.jwt_secret, { expiresIn: '7d' });
-
         //send the token in the response 
         res.send({
             success: true,
             token
         });
-
-
-
 
     } catch (error) {
         return res.status(500).send({

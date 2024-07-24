@@ -11,22 +11,14 @@ router.post("/createProject", authMiddleware, async (req, res) => {
     try {
         //object destructured
         const { ProjectName, Reason, Type, Division, Category, Priority, Department, StartDate, EndDate, Location, Status } = req.body;
-        console.log(req.body);
-
-        // all fields are required
-        // if (!ProjectName || !Reason || !Type || !Division || !Category || !Priority || !Department || !StartDate || !EndDate || !Location || !Status) {
-        //     return res.status(400).json({
-        //         message: "All fields are mandatory"
-        //     });
-        // }
-
+      
         //check the date
         const startDateObj = new Date(StartDate);
         const endDateObj = new Date(EndDate);
 
         if (startDateObj > endDateObj) {
             return res.status(400).json({ message: "Start date cannot be greater than end date" });
-            //console.log("error is here")
+            
         }
 
         const nameProject = await createProjectModel.findOne({ ProjectName });
@@ -61,30 +53,3 @@ router.post("/createProject", authMiddleware, async (req, res) => {
 });
 
 export default router;
-
-
-
-
-
-
-
-/*
-
-http://localhost:5000/api/createProject
-{
-    "ProjectName": "TPLS",
-    "Reason": "Assignment",
-    "Type": "dev",
-    "Division": "Digital Marketing",
-    "Category": "Website",
-    "Priority": "High",
-    "Department": "full-stack",
-    "StartDate": "2023-07-01",
-    "EndDate": "2024-12-31",
-    "Location": "Headquarters",
-    "Status": "close"
-}
-
-
-
-*/

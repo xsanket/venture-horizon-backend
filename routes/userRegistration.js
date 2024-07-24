@@ -47,18 +47,3 @@ router.post('/registration', async (req, res) => {
 });
 
 export default router;
-
-
-
-/*****************************
-http://localhost:5000/api/registration
-
-http://localhost:5000/api/login
-
- test route 
-{
-  "email": "test@example.com",
-  "password": "password123"
-}
-
-*/

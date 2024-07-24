@@ -67,7 +67,7 @@ router.get("/getGraphData", authMiddleware, async (req, res) => {
     try {
         res.status(200).send({ closed, total });
     } catch (err) {
-        console.log(err);
+        
         res.send({ msg: "No data found" });
     }
 });
@@ -122,7 +122,7 @@ router.get("/countProject", async (req, res) => {
     try {
         res.status(200).send(countObj);
     } catch (error) {
-        console.log(err);
+       
         res.status(400).send({ msg: "No Data Found" });
     }
 })

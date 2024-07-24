@@ -66,8 +66,7 @@ router.put("/updateStatussss", authMiddleware, async (req, res) => {
                 message: "Status Updated",
                 data: updateStatus
             });
-            
-            //res.status(200).send({ message: "Status Updated", updateStatus });
+    
         }
 
 

@@ -53,8 +53,7 @@ app.use('/api', graphProject)
 dbConfig.dbConnection();
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`
-    );
+   
 });
 
 
